@@ -14,6 +14,8 @@
 		04F434D02B07B656002B3407 /* CardAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F434CF2B07B656002B3407 /* CardAssignmentTests.swift */; };
 		04F434DA2B07B656002B3407 /* CardAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F434D92B07B656002B3407 /* CardAssignmentUITests.swift */; };
 		04F434DC2B07B656002B3407 /* CardAssignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F434DB2B07B656002B3407 /* CardAssignmentUITestsLaunchTests.swift */; };
+		04F434E92B07B671002B3407 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F434E82B07B671002B3407 /* Card.swift */; };
+		04F434EB2B07B752002B3407 /* WOT-Scryfall.json in Resources */ = {isa = PBXBuildFile; fileRef = 04F434EA2B07B752002B3407 /* WOT-Scryfall.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		04F434D52B07B656002B3407 /* CardAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F434D92B07B656002B3407 /* CardAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAssignmentUITests.swift; sourceTree = "<group>"; };
 		04F434DB2B07B656002B3407 /* CardAssignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAssignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		04F434E82B07B671002B3407 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		04F434EA2B07B752002B3407 /* WOT-Scryfall.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "WOT-Scryfall.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +98,12 @@
 		04F434BD2B07B653002B3407 /* CardAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				04F434EA2B07B752002B3407 /* WOT-Scryfall.json */,
 				04F434BE2B07B653002B3407 /* CardAssignmentApp.swift */,
 				04F434C02B07B653002B3407 /* ContentView.swift */,
 				04F434C22B07B655002B3407 /* Assets.xcassets */,
 				04F434C42B07B655002B3407 /* Preview Content */,
+				04F434E82B07B671002B3407 /* Card.swift */,
 			);
 			path = CardAssignment;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 			files = (
 				04F434C62B07B655002B3407 /* Preview Assets.xcassets in Resources */,
 				04F434C32B07B655002B3407 /* Assets.xcassets in Resources */,
+				04F434EB2B07B752002B3407 /* WOT-Scryfall.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F434C12B07B653002B3407 /* ContentView.swift in Sources */,
+				04F434E92B07B671002B3407 /* Card.swift in Sources */,
 				04F434BF2B07B653002B3407 /* CardAssignmentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
