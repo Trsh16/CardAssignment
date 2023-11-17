@@ -24,7 +24,7 @@ struct ContentView: View {
         }
     }
 
-    // Function to load and parse the JSON data
+ 
     func loadData() {
         if let url = Bundle.main.url(forResource: "WOT-Scryfall", withExtension: "json"),
            let data = try? Data(contentsOf: url) {
@@ -100,7 +100,7 @@ struct CardDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 100) {
 
-                    // Use a single AsyncImage with a TapGesture
+            
                     AsyncImage(url: URL(string: datum.imageUris?.artCrop ?? "")) { phase in
                         switch phase {
                         case .success(let image):
@@ -109,7 +109,7 @@ struct CardDetailView: View {
                                 .scaledToFill()
                                 .frame(height: 100, alignment: .top)
                                 .onTapGesture {
-                                    // Set a flag to show a larger image when tapped
+                               
                                     isImageTapped = true
                                 }
                         case .failure:
@@ -133,7 +133,8 @@ struct CardDetailView: View {
                         Text("Name: \(datum.name)").bold()
                         Text("Type Line: \(datum.typeLine.rawValue)")
                         Text("Mana Cost: \(datum.manaCost)")
-                        Text("LEGALITIES").bold()
+                        Spacer()
+                        Text("Legalities:").bold()
                         LegalitiesView(legalities: datum.legalities)
                     }
                     .padding()
@@ -142,7 +143,6 @@ struct CardDetailView: View {
             }
         }
         .sheet(isPresented: $isImageTapped) {
-            // This is the sheet that will appear when the image is tapped
             LargerImageView(url: URL(string: datum.imageUris?.normal ?? ""))
         }
     }
@@ -152,7 +152,7 @@ struct LargerImageView: View {
     var url: URL?
 
     var body: some View {
-        // Create a view to display the larger image
+
         if let url = url {
             AsyncImage(url: url) { phase in
                 switch phase {
@@ -178,37 +178,43 @@ struct LargerImageView: View {
     }
 }
 
-
-
 struct LegalitiesView: View {
     var legalities: Legalities
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Standard: \(legalities.standard.rawValue)")
-            Text("Modern: \(legalities.modern.rawValue)")
-            Text("Vintage: \(legalities.vintage.rawValue)")
-            Text("Alchemy: \(legalities.alchemy.rawValue)")
-            Text("Brawl: \(legalities.brawl.rawValue)")
-            Text("Commander: \(legalities.commander.rawValue)")
-            Text("Duel: \(legalities.duel.rawValue)")
-            Text("Explorer: \(legalities.explorer.rawValue)")
-            Text("Future: \(legalities.future.rawValue)")
-            Text("Gladiator: \(legalities.gladiator.rawValue)")
-            Text("Historic: \(legalities.historic.rawValue)")
-            Text("HistoricBrawl: \(legalities.historicbrawl.rawValue)")
-            Text("Legacy: \(legalities.legacy.rawValue)")
-            Text("Oathbreaker: \(legalities.oathbreaker.rawValue)")
-            Text("Oldschool: \(legalities.oldschool.rawValue)")
-            Text("Pauper: \(legalities.pauper.rawValue)")
-            Text("PauperCommander: \(legalities.paupercommander.rawValue)")
-            Text("Penny: \(legalities.penny.rawValue)")
-            Text("Pioneer: \(legalities.pioneer.rawValue)")
-            Text("Predh: \(legalities.predh.rawValue)")
-            Text("Premodern: \(legalities.premodern.rawValue)")
+            legalityText("Standard: ", legalities.standard.rawValue)
+            legalityText("Modern: ", legalities.modern.rawValue)
+            legalityText("Vintage: ", legalities.vintage.rawValue)
+            legalityText("Alchemy: ", legalities.alchemy.rawValue)
+            legalityText("Brawl: ", legalities.brawl.rawValue)
+            legalityText("Commander: ", legalities.commander.rawValue)
+            legalityText("Duel: ", legalities.duel.rawValue)
+            legalityText("Explorer: ", legalities.explorer.rawValue)
+            legalityText("Future: ", legalities.future.rawValue)
+            legalityText("Gladiator: ", legalities.gladiator.rawValue)
+            legalityText("Historic: ", legalities.historic.rawValue)
+            legalityText("HistoricBrawl: ", legalities.historicbrawl.rawValue)
+            legalityText("Legacy: ", legalities.legacy.rawValue)
+            legalityText("Oathbreaker: ", legalities.oathbreaker.rawValue)
+            legalityText("Oldschool: ", legalities.oldschool.rawValue)
+            legalityText("Pauper: ", legalities.pauper.rawValue)
+            legalityText("PauperCommander: ", legalities.paupercommander.rawValue)
+            legalityText("Penny: ", legalities.penny.rawValue)
+            legalityText("Pioneer: ", legalities.pioneer.rawValue)
+            legalityText("Predh: ", legalities.predh.rawValue)
+            legalityText("Premodern: ", legalities.premodern.rawValue)
         }
     }
+
+    private func legalityText(_ title: String, _ legality: String) -> some View {
+        Text("\(title)\(legality)")
+            .background(legality == "legal" ? .green : .red)
+    }
 }
+
+
+
 
 struct DatumView: View {
     var datum: Datum
